@@ -2,7 +2,7 @@
 
 Sitio web de Eco Pilgua, un emprendimiento de productos personalizados, papeleria creativa y disenos hechos a mano.
 
-El proyecto usa Vite para desarrollo local y build de produccion. Tambien incluye configuracion de Netlify para publicar el sitio y simular funciones serverless durante el desarrollo.
+El proyecto usa Vite para desarrollo local y build de produccion. Tambien incluye configuracion de Netlify para publicar el sitio.
 
 ## Datos academicos
 
@@ -18,12 +18,18 @@ Docente: Felipe Igor Flores Valdebenito
 - Rodrigo Ariel Quilodran Nunez.
 - Cesar Gerardo Ramos Olivares.
 
-## Requisitos
+## Sitio publicado
+
+```text
+https://ecopilguav1.netlify.app/
+```
+
+## Requisitos para ejecutar el proyecto
 
 - Node.js 20 o superior
 - npm
 
-## Instalacion
+## Instalacion de dependencias
 
 ```bash
 npm install
@@ -37,36 +43,22 @@ Para levantar solo Vite:
 npm run dev
 ```
 
-La web queda disponible normalmente en:
+La web queda disponible en:
 
 ```text
 http://localhost:5173
 ```
 
-Para simular el entorno de Netlify, incluyendo funciones:
+Para probar el sitio con la configuracion local de Netlify:
 
 ```bash
 npm run netlify:dev
 ```
 
-La web queda disponible normalmente en:
+La web queda disponible en:
 
 ```text
 http://localhost:8888
-```
-
-## Funcion de prueba
-
-El proyecto incluye una funcion Netlify de estado:
-
-```text
-/api/status
-```
-
-En desarrollo local con Netlify Dev:
-
-```text
-http://localhost:8888/api/status
 ```
 
 ## Build
@@ -97,12 +89,6 @@ vite.config.js          Configuracion de Vite
 ```
 
 ## Despliegue
-
-Sitio publicado en Netlify:
-
-```text
-https://ecopilguav1.netlify.app/
-```
 
 Netlify usa esta configuracion:
 
