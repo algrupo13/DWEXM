@@ -128,8 +128,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3200);
   };
 
+  const limpiarErrores = () => {
+    formCorreo.querySelectorAll(".input-contacto.invalido").forEach((campo) => {
+      campo.classList.remove("invalido");
+      campo.removeAttribute("aria-invalid");
+    });
+  };
+
+  const marcarError = (campo, mensaje) => {
+    campo.classList.add("invalido");
+    campo.setAttribute("aria-invalid", "true");
+    campo.focus();
+    mostrarAlerta(mensaje, "error");
+  };
+
+  const validarCorreo = () => {
+    limpiarErrores();
+
+    const nombre = formCorreo.elements.nombre;
+    const asunto = formCorreo.elements.asunto;
+    const email = formCorreo.elements.email;
+    const mensaje = formCorreo.elements.message;
+
+    const regexNombre = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{2,80}$/;
+    const regexAsunto = /^.{3,120}$/;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regexMensaje = /^[\s\S]{1,500}$/;
+
+    if (!regexNombre.test(nombre.value.trim())) {
+      marcarError(nombre, "Ingresa tu nombre. Debe tener entre 2 y 80 letras.");
+      return false;
+    }
+
+    if (!regexAsunto.test(asunto.value.trim())) {
+      marcarError(asunto, "Ingresa un asunto. Debe tener entre 3 y 120 caracteres.");
+      return false;
+    }
+
+    if (!regexEmail.test(email.value.trim())) {
+      marcarError(email, "Ingresa un correo electrónico válido.");
+      return false;
+    }
+
+    if (!regexMensaje.test(mensaje.value.trim())) {
+      marcarError(mensaje, "Ingresa un mensaje de máximo 500 caracteres.");
+      return false;
+    }
+
+    return true;
+  };
+
+  formCorreo.querySelectorAll(".input-contacto").forEach((campo) => {
+    campo.addEventListener("input", () => {
+      campo.classList.remove("invalido");
+      campo.removeAttribute("aria-invalid");
+    });
+  });
+
   formCorreo.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!validarCorreo()) return;
 
     const botonEnviar = formCorreo.querySelector(".btn-enviar-directo");
     const textoOriginal = botonEnviar?.textContent;

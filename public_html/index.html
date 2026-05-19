@@ -471,15 +471,15 @@
             <summary class="font-semibold text-pink-500 hover:underline list-none outline-none cursor-pointer">
                 Gmail 
             </summary>
-            <form id="formCorreo" action="https://formspree.io/f/xbdblyvw" method="POST">
+            <form id="formCorreo" action="https://formspree.io/f/xbdblyvw" method="POST" novalidate>
             <div class="recuadro-directo mt-4">
                 <button type="button" class="btn-cerrar" onclick="this.closest('details').removeAttribute('open')">&times;</button>
                 
                 <p class="text-xs mb-2 text-gray-400 italic">Ventana de envío rápida</p>
-                <input type="text" name="nombre" placeholder="Tu nombre" class="input-contacto">
-                <input type="text" name="asunto" placeholder="Asunto" class="input-contacto">
-                <input type="email" name="email" placeholder="Tu correo" class="input-contacto">
-                <textarea name="message" placeholder="¿En qué podemos ayudarte?" class="input-contacto h-24 resize-none"></textarea>
+                <input type="text" name="nombre" placeholder="Tu nombre" class="input-contacto" required minlength="2" maxlength="80" autocomplete="name">
+                <input type="text" name="asunto" placeholder="Asunto" class="input-contacto" required minlength="3" maxlength="120">
+                <input type="email" name="email" placeholder="Tu correo" class="input-contacto" required autocomplete="email">
+                <textarea name="message" placeholder="¿En qué podemos ayudarte?" class="input-contacto h-24 resize-none" required maxlength="500"></textarea>
                 <button type="submit" class="btn-enviar-directo">
                     Enviar mensaje
                 </button>

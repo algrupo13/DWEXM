@@ -686,6 +686,11 @@ footer a:hover img {
     background-color: #ffffff;
 }
 
+.input-contacto.invalido {
+    border-color: #dc2626;
+    background-color: #fff1f2;
+}
+
 .btn-enviar-directo {
     background-color: #ec4899;
     color: white;
