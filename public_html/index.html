@@ -320,7 +320,7 @@
 
       </h2>
 
-     <div class="grid md:grid-cols-3 gap-10 mt-16 fade-in">
+     <div id="listaTestimonios" class="grid md:grid-cols-3 gap-10 mt-16 fade-in">
 
         <div class="bg-pink-50 p-8 rounded-3xl shadow-lg">
 
@@ -387,12 +387,19 @@
         
         <p class="text-xs mb-2 text-gray-500 italic">Tu opinión nos ayuda a crecer</p>
         
-        <form id="formTestimonio" class="flex flex-col gap-2">
-            <input type="text" id="nombreTestimonio" placeholder="Tu nombre" class="input-contacto" required>
+        <form id="formTestimonio" class="flex flex-col gap-2" data-audit-action="https://formspree.io/f/xbdblyvw" novalidate>
+            <input type="text" id="nombreTestimonio" placeholder="Tu nombre" class="input-contacto" required minlength="2" maxlength="20" autocomplete="name">
             
-            <div class="flex gap-1 text-yellow-400 mb-1">★★★★★</div>
+            <div id="selectorEstrellas" class="selector-estrellas" role="radiogroup" aria-label="Calificación del testimonio">
+                <button type="button" class="estrella-btn activa" data-valor="1" aria-label="1 estrella" aria-checked="false" role="radio">★</button>
+                <button type="button" class="estrella-btn activa" data-valor="2" aria-label="2 estrellas" aria-checked="false" role="radio">★</button>
+                <button type="button" class="estrella-btn activa" data-valor="3" aria-label="3 estrellas" aria-checked="false" role="radio">★</button>
+                <button type="button" class="estrella-btn activa" data-valor="4" aria-label="4 estrellas" aria-checked="false" role="radio">★</button>
+                <button type="button" class="estrella-btn activa" data-valor="5" aria-label="5 estrellas" aria-checked="true" role="radio">★</button>
+            </div>
+            <input type="hidden" id="estrellasTestimonio" value="5">
             
-            <textarea id="textoTestimonio" placeholder="Cuéntanos tu experiencia..." class="input-contacto h-24 resize-none" required></textarea>
+            <textarea id="textoTestimonio" placeholder="Cuéntanos tu experiencia..." class="input-contacto h-24 resize-none" required maxlength="100"></textarea>
             
             <button type="submit" class="btn-enviar-directo">
                 Publicar Testimonio
@@ -467,7 +474,7 @@
 <div class="red-social flex flex-col items-start w-full mb-8">
     <div class="flex items-center gap-2">
         <img src="https://cdn.simpleicons.org/gmail/EA4335" class="inoco" alt="Correo">
-        <details class="group">
+        <details id="modalCorreo" class="group">
             <summary class="font-semibold text-pink-500 hover:underline list-none outline-none cursor-pointer">
                 Gmail 
             </summary>
@@ -490,7 +497,7 @@
 </div>
     </div>
     <span>Correo:</span>
-   <a href="mailto:ecopilgua@gmail.com">
+   <a id="abrirCorreo" href="#modalCorreo">
       ecopligua@gmail.com
     </a>
   </div>

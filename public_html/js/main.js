@@ -81,28 +81,210 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================
- ADVERTENCIA TESTIMONIO
+ TESTIMONIOS LOCALES
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById('formTestimonio');
+  const form = document.getElementById("formTestimonio");
+  const lista = document.getElementById("listaTestimonios");
+  const nombreInput = document.getElementById("nombreTestimonio");
+  const textoInput = document.getElementById("textoTestimonio");
+  const estrellasInput = document.getElementById("estrellasTestimonio");
+  const botonesEstrellas = form.querySelectorAll(".estrella-btn");
+  const alertaSitio = document.getElementById("alertaCorreo");
+  const storageKey = "ecoPilguaTestimonios";
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); // Evita que la página se recargue
+  if (!form || !lista || !nombreInput || !textoInput || !estrellasInput || botonesEstrellas.length === 0) return;
 
-            const nombre = document.getElementById('nombreTestimonio').value.trim();
-            const experiencia = document.getElementById('textoTestimonio').value.trim();
-
-            // Validación con advertencia
-            if (nombre === "" || experiencia === "") {
-                alert("⚠️ Por favor, completa tu nombre y tu experiencia. Ambos campos son obligatorios.");
-            } else {
-                alert(`¡Gracias ${nombre}! Tu testimonio será revisado por nuestro equipo.`);
-                form.reset(); // Limpia el formulario
-                form.closest('details').removeAttribute('open'); // Cierra la ventana
-            }
-        });
+  const obtenerTestimonios = () => {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch (error) {
+      return [];
     }
+  };
+
+  const guardarTestimonios = (testimonios) => {
+    localStorage.setItem(storageKey, JSON.stringify(testimonios));
+  };
+
+  let avisoTimer;
+
+  const mostrarAvisoSitio = (mensaje, tipo = "ok") => {
+    if (!alertaSitio) {
+      alert(mensaje);
+      return;
+    }
+
+    alertaSitio.textContent = mensaje;
+    alertaSitio.dataset.tipo = tipo;
+    window.clearTimeout(avisoTimer);
+    alertaSitio.classList.add("visible");
+
+    avisoTimer = window.setTimeout(() => {
+      alertaSitio.classList.remove("visible");
+    }, 3200);
+  };
+
+  const crearCardTestimonio = ({ nombre, experiencia, estrellas = 5 }) => {
+    const card = document.createElement("div");
+    card.className = "bg-pink-50 p-8 rounded-3xl shadow-lg testimonio-local";
+
+    const texto = document.createElement("p");
+    texto.className = "italic text-gray-600";
+    texto.textContent = `"${experiencia}"`;
+
+    const estrellasElemento = document.createElement("p");
+    estrellasElemento.className = "mt-4 text-pink-400";
+    estrellasElemento.textContent = "★".repeat(Number(estrellas) || 5);
+
+    const autor = document.createElement("h4");
+    autor.className = "mt-6 font-bold";
+    autor.textContent = nombre;
+
+    card.append(texto, estrellasElemento, autor);
+    return card;
+  };
+
+  const renderizarTestimonios = () => {
+    lista.querySelectorAll(".testimonio-local").forEach((card) => card.remove());
+    obtenerTestimonios().forEach((testimonio) => {
+      lista.appendChild(crearCardTestimonio(testimonio));
+    });
+  };
+
+  const limpiarErroresTestimonio = () => {
+    form.querySelectorAll(".input-contacto.invalido").forEach((campo) => {
+      campo.classList.remove("invalido");
+      campo.removeAttribute("aria-invalid");
+    });
+  };
+
+  const mostrarErrorTestimonio = (campo, mensaje) => {
+    campo.classList.add("invalido");
+    campo.setAttribute("aria-invalid", "true");
+    campo.focus();
+    mostrarAvisoSitio(mensaje, "error");
+  };
+
+  form.querySelectorAll(".input-contacto").forEach((campo) => {
+    campo.addEventListener("input", () => {
+      campo.classList.remove("invalido");
+      campo.removeAttribute("aria-invalid");
+    });
+  });
+
+  const actualizarEstrellas = (valor) => {
+    estrellasInput.value = valor;
+    botonesEstrellas.forEach((boton) => {
+      const activo = Number(boton.dataset.valor) <= Number(valor);
+      boton.classList.toggle("activa", activo);
+      boton.setAttribute("aria-checked", boton.dataset.valor === String(valor) ? "true" : "false");
+    });
+  };
+
+  botonesEstrellas.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      actualizarEstrellas(boton.dataset.valor);
+    });
+  });
+
+  const enviarAuditoriaTestimonio = async ({ nombre, experiencia, estrellas, fecha }) => {
+    const auditAction = form.dataset.auditAction;
+
+    if (!auditAction) {
+      throw new Error("No hay un destino configurado para auditoría.");
+    }
+
+    const datos = new FormData();
+    datos.append("_subject", "Nuevo testimonio Eco Pilgua");
+    datos.append("tipo", "Testimonio");
+    datos.append("nombre", nombre);
+    datos.append("experiencia", experiencia);
+    datos.append("estrellas", estrellas);
+    datos.append("fecha", fecha);
+    datos.append("message", `Nuevo testimonio de ${nombre} (${estrellas} estrellas): ${experiencia}`);
+
+    const respuesta = await fetch(auditAction, {
+      method: "POST",
+      body: datos,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudo enviar el testimonio para auditoría.");
+    }
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    limpiarErroresTestimonio();
+
+    const botonEnviar = form.querySelector(".btn-enviar-directo");
+    const textoOriginal = botonEnviar?.textContent;
+    const nombre = nombreInput.value.trim();
+    const experiencia = textoInput.value.trim();
+    const estrellas = estrellasInput.value.trim();
+    const regexNombre = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{2,20}$/;
+    const regexExperiencia = /^[\s\S]{5,100}$/;
+    const regexEstrellas = /^[1-5]$/;
+
+    if (!regexNombre.test(nombre)) {
+      mostrarErrorTestimonio(nombreInput, "Ingresa tu nombre. Debe tener entre 2 y 20 letras.");
+      return;
+    }
+
+    if (!regexExperiencia.test(experiencia)) {
+      mostrarErrorTestimonio(textoInput, "Ingresa tu experiencia. Debe tener entre 5 y 100 caracteres.");
+      return;
+    }
+
+    if (!regexEstrellas.test(estrellas)) {
+      mostrarAvisoSitio("La calificación debe estar entre 1 y 5 estrellas.", "error");
+      return;
+    }
+
+    const nuevoTestimonio = {
+      nombre,
+      experiencia,
+      estrellas: Number(estrellas),
+      fecha: new Date().toISOString()
+    };
+
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = "Publicando...";
+    }
+
+    try {
+      await enviarAuditoriaTestimonio(nuevoTestimonio);
+    } catch (error) {
+      mostrarAvisoSitio("No se pudo enviar el testimonio para auditoría. Inténtalo nuevamente.", "error");
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = textoOriginal;
+      }
+      return;
+    }
+
+    const testimonios = obtenerTestimonios();
+    testimonios.unshift(nuevoTestimonio);
+
+    guardarTestimonios(testimonios.slice(0, 12));
+    renderizarTestimonios();
+    form.reset();
+    actualizarEstrellas(5);
+    form.closest("details")?.removeAttribute("open");
+    mostrarAvisoSitio("Gracias. Tu testimonio fue enviado y guardado en este navegador.");
+
+    if (botonEnviar) {
+      botonEnviar.disabled = false;
+      botonEnviar.textContent = textoOriginal;
+    }
+  });
+
+  renderizarTestimonios();
 });
 
 /* =========================
@@ -111,6 +293,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const formCorreo = document.getElementById("formCorreo");
   const alertaCorreo = document.getElementById("alertaCorreo");
+  const modalCorreo = document.getElementById("modalCorreo");
+  const abrirCorreo = document.getElementById("abrirCorreo");
 
   if (!formCorreo || !alertaCorreo) return;
 
@@ -184,6 +368,14 @@ document.addEventListener("DOMContentLoaded", () => {
       campo.removeAttribute("aria-invalid");
     });
   });
+
+  if (modalCorreo && abrirCorreo) {
+    abrirCorreo.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalCorreo.setAttribute("open", "");
+      formCorreo.elements.nombre?.focus();
+    });
+  }
 
   formCorreo.addEventListener("submit", async (e) => {
     e.preventDefault();

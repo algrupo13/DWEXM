@@ -691,6 +691,35 @@ footer a:hover img {
     background-color: #fff1f2;
 }
 
+.selector-estrellas {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.estrella-btn {
+    width: 26px;
+    height: 26px;
+    border: 0;
+    background: transparent;
+    color: #fbcfe8;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s ease;
+}
+
+.estrella-btn.activa,
+.estrella-btn:hover {
+    color: #facc15;
+}
+
+.estrella-btn:focus-visible {
+    outline: 2px solid #ec4899;
+    outline-offset: 2px;
+}
+
 .btn-enviar-directo {
     background-color: #ec4899;
     color: white;
