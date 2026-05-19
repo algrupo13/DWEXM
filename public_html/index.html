@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Eco Pilgua</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Tailwind -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- CSS PERSONALIZADO -->
+  <link rel="stylesheet" href="css/skilline.css">
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body class="bg-pink-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow sticky top-0 z-50">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <div class="flex items-center gap-4">
+
+        <img src="img/logo.jpg"
+          alt="Logo Eco Pilgua"
+          class="w-14 h-14 rounded-full object-cover">
+
+        <div>
+
+          <h1 class="text-2xl font-bold text-pink-500">
+
+            Eco Pilgua
+
+          </h1>
+
+          <p class="text-sm text-gray-500">
+
+            Cada pieza cuenta una historia
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="mainMenu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+<nav id="mainMenu" class="hidden md:flex items-center gap-3">
+  <a href="#inicio" class="menu-btn">Inicio</a>
+  <a href="#mision" class="menu-btn">Misión</a>
+  <a href="#vision" class="menu-btn">Visión</a>
+  <a href="#productos" class="menu-btn">Productos</a>
+  <a href="#galeria" class="menu-btn">Galería</a>
+  <a href="#testimonios" class="menu-btn">Testimonios</a>
+  <a href="#nuestra_historia" class="menu-btn">Historia</a>
+  <a href="#contacto" class="menu-btn menu-btn-principal">Contacto</a>
+</nav>
+
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio"
+    class="min-h-screen flex items-center bg-gradient-to-r from-pink-100 to-pink-50">
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+      <div>
+
+        <h2 class="text-5xl font-bold leading-tight">
+
+          Bienvenidos a
+
+          <span class="text-pink-500">
+
+            Eco Pilgua
+
+          </span>
+
+        </h2>
+
+        <p class="mt-6 text-lg text-gray-600">
+
+          Productos personalizados, papelería creativa y diseños únicos
+          hechos con dedicación y cariño.
+
+        </p>
+
+        <div class="mt-8">
+
+          <a href="#productos"
+            class="bg-pink-500 text-white px-8 py-4 rounded-full hover:bg-pink-600 transition">
+
+            Ver Productos
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <img src="img/imagen1.jpg"
+          alt="Eco Pilgua"
+          class="rounded-3xl shadow-2xl floating">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SOBRE -->
+  
+<section class="py-24 bg-white">
+
+  <div class="max-w-5xl mx-auto px-6 text-center sobre-card fade-in">
+
+    <h2 class="text-4xl font-bold text-pink-500">
+      Sobre Eco Pilgua
+    </h2>
+
+    <p class="mt-8 text-lg leading-relaxed text-gray-600">
+      Emprendimiento nacional dedicado a la creación de productos personalizados.
+      Nuestro trabajo se basa en la combinación de diseño, funcionalidad y dedicación artesanal.
+    </p>
+
+  </div>
+
+</section>
+
+
+  <!-- MISION Y VISION -->
+  <section class="py-24 bg-pink-50">
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12"> 
+<div id="mision"
+  class="bg-white rounded-3xl p-10 shadow-lg fade-in">
+        <h2 class="text-3xl font-bold text-pink-500">
+          Misión
+        </h2>
+        <p class="mt-6 text-gray-600 leading-relaxed">
+          Crear productos personalizados que transformen ideas en piezas únicas llenas de color,
+          emoción y significado.
+        </p>
+      </div> 
+<div id="vision"
+  class="bg-white rounded-3xl p-10 shadow-lg fade-in">
+        <h2 class="text-3xl font-bold text-pink-500">
+          Visión
+        </h2>
+        <p class="mt-6 text-gray-600 leading-relaxed">
+          Ser una marca reconocida por la creatividad y compromiso con cada cliente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos"
+    class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center">
+        <h2 class="text-4xl font-bold text-pink-500">
+          Nuestros Productos
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-10 mt-16 fade-in">
+
+        <!-- PRODUCTO -->
+        <div class="producto-card bg-pink-50 rounded-3xl overflow-hidden shadow-lg" tabindex="0"
+          data-descripcion="Ideales para organizar fechas importantes con un diseño hecho a medida.">
+
+          <img src="img/imagen1.jpg"
+            alt="Calendarios"
+            class="w-full h-72 object-cover">
+
+          <div class="p-6">
+
+            <h3 class="text-2xl font-bold">
+
+              Calendarios
+
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+
+              Calendarios magnéticos personalizados.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto-card bg-pink-50 rounded-3xl overflow-hidden shadow-lg" tabindex="0"
+          data-descripcion="Personalizadas con nombres, frases, imágenes o diseños especiales para regalo.">
+
+          <img src="img/IMG_20240208_133443.jpg"
+            alt="Tazas"
+            class="w-full h-72 object-cover">
+
+          <div class="p-6">
+
+            <h3 class="text-2xl font-bold">
+
+              Tazas
+
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+
+              Tazas sublimadas personalizadas.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto-card bg-pink-50 rounded-3xl overflow-hidden shadow-lg" tabindex="0"
+          data-descripcion="Superficies cómodas y resistentes con ilustraciones, fotos o diseños personalizados.">
+
+          <img src="img/IMG_20210424_224524.jpg"
+            alt="Mousepads"
+            class="w-full h-72 object-cover">
+
+          <div class="p-6">
+
+            <h3 class="text-2xl font-bold">
+
+              Mousepads
+
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+
+              Mousepads personalizados.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria"
+    class="py-24 bg-pink-50">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center">
+
+        <h2 class="text-4xl font-bold text-pink-500">
+
+          Galería
+
+        </h2>
+
+      </div>   
+<div class="grid md:grid-cols-3 gap-8 mt-16 fade-in">
+
+  <div class="img-card">
+    <img src="img/IMG_20250627_101129.jpg" alt="Regalo personalizado">
+    <div class="img-overlay-text">Regalo personalizado</div>
+  </div>
+
+  <div class="img-card">
+    <img src="img/IMG_20241103_214805.jpg" alt="Pedido especial">
+    <div class="img-overlay-text">Pedido especial</div>
+  </div>
+
+  <div class="img-card">
+    <img src="img/IMG_20231009_165148.jpg" alt="Diseño a medida">
+    <div class="img-overlay-text">Diseño a medida</div>
+  </div>
+
+</div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios"
+    class="py-24 bg-white">
+
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+      <h2 class="text-4xl font-bold text-pink-500">
+
+        Testimonios
+
+      </h2>
+
+     <div class="grid md:grid-cols-3 gap-10 mt-16 fade-in">
+
+        <div class="bg-pink-50 p-8 rounded-3xl shadow-lg">
+
+        
+          <p class="italic text-gray-600">
+            “Le conté mi idea y quedó hermoso.”
+           </p>
+           <p class="mt-4 text-pink-400">
+              ★★★★★
+           </p>
+
+          <h4 class="mt-6 font-bold">
+
+            Carolina
+
+          </h4>
+
+        </div>
+
+        <div class="bg-pink-50 p-8 rounded-3xl shadow-lg">
+
+          <p class="italic text-gray-600">
+
+            "Productos preciosos y duraderos."
+          </p>
+          <p class="mt-4 text-pink-400">
+              ★★★★★
+           </p>
+          <h4 class="mt-6 font-bold">
+
+            Danae
+
+          </h4>
+
+        </div>
+
+        <div class="bg-pink-50 p-8 rounded-3xl shadow-lg">
+
+          <p class="italic text-gray-600">
+            "Excelente atención y compromiso."
+          </p>
+          <p class="mt-4 text-pink-400">
+              ★★★★★
+           </p>
+
+          <h4 class="mt-6 font-bold">
+
+            Cindy
+
+          </h4>
+
+        </div>
+
+      </div>
+
+    </div>
+      
+  <details class="group"> <summary class="bg-pink-500 text-white px-8 py-3 rounded-full hover:bg-pink-600 transition inline-block list-none outline-none cursor-pointer">
+        Dejar mi testimonio
+    </summary>
+    
+    <div class="recuadro-directo mx-auto mt-6">
+        <button type="button" class="btn-cerrar" onclick="this.parentElement.parentElement.removeAttribute('open')">&times;</button>
+        
+        <p class="text-xs mb-2 text-gray-500 italic">Tu opinión nos ayuda a crecer</p>
+        
+        <form id="formTestimonio" class="flex flex-col gap-2">
+            <input type="text" id="nombreTestimonio" placeholder="Tu nombre" class="input-contacto" required>
+            
+            <div class="flex gap-1 text-yellow-400 mb-1">★★★★★</div>
+            
+            <textarea id="textoTestimonio" placeholder="Cuéntanos tu experiencia..." class="input-contacto h-24 resize-none" required></textarea>
+            
+            <button type="submit" class="btn-enviar-directo">
+                Publicar Testimonio
+            </button>
+        </form>
+    </div>
+</details>
+
+  </section>
+
+  <!-- HISTORIA -->
+  <section id="nuestra_historia"
+  class="py-24 bg-pink-50">
+
+  <div class="max-w-5xl mx-auto px-6 text-center historia-card fade-in">
+
+    <h2 class="text-4xl font-bold text-pink-500">
+      Nuestra Historia
+    </h2>
+
+    <p class="mt-8 text-lg leading-relaxed text-gray-600">
+      Eco Pilgua nace desde una historia de esfuerzo, amor y resiliencia.
+      Cada producto refleja dedicación y cariño por el trabajo hecho a mano.
+    </p>
+
+  </div>
+
+</section>
+
+  <!-- CONTACTO -->
+  <section id="contacto"
+    class="py-24 bg-white">
+
+    <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+
+      <h2 class="text-4xl font-bold text-pink-500">
+
+        Contacto
+      </h2>
+       
+     <p class="mt-6 text-gray-500">
+      Escríbenos, nos encanta crear contigo
+    </p>
+
+
+      <div class="mt-12 space-y-6 text-lg">
+
+  <div class="red-social">
+    <img src="https://cdn.simpleicons.org/instagram/E4405F" class="icono" alt="Instagram">
+    <span>Instagram:</span>
+    <a href="https://www.instagram.com/ecopligua" target="_blank">
+      @ecopligua
+    </a>
+  </div>
+
+  <div class="red-social">
+    <img src="https://cdn.simpleicons.org/facebook/1877F2" class="icono" alt="Facebook">
+    <span>Facebook:</span>
+    <a href="https://web.facebook.com/Ecopilgua2" target="_blank">
+      Eco Pilgua
+    </a>
+  </div>
+
+  <div class="red-social">
+    <img src="https://cdn.simpleicons.org/whatsapp/25D366" class="icono" alt="WhatsApp">
+    <span>WhatsApp:</span>
+    <a href="https://wa.me/56932776583" target="_blank">
+      +56 9 3277 6583
+    </a>
+  </div>
+
+<div class="red-social flex flex-col items-start w-full mb-8">
+    <div class="flex items-center gap-2">
+        <img src="https://cdn.simpleicons.org/gmail/EA4335" class="inoco" alt="Correo">
+        <details class="group">
+            <summary class="font-semibold text-pink-500 hover:underline list-none outline-none cursor-pointer">
+                Gmail (Simulación)
+            </summary>
+            <div class="recuadro-directo mt-4">
+                <button type="button" class="btn-cerrar" onclick="this.parentElement.parentElement.removeAttribute('open')">&times;</button>
+                
+                <p class="text-xs mb-2 text-gray-400 italic">Ventana de envío rápida</p>
+                <input type="text" placeholder="Tu nombre" class="input-contacto">
+                <input type="text" placeholder="Asunto" class="input-contacto">
+                <textarea placeholder="¿En qué podemos ayudarte?" class="input-contacto h-24 resize-none"></textarea>
+                <button type="button" class="btn-enviar-directo" onclick="alert('Simulación: ¡Mensaje enviado con éxito!')">
+                    Enviar mensaje
+                </button>
+            </div>
+        </details>
+    </div>
+</div>
+    </div>
+    <span>Correo:</span>
+   <a href="mailto:ecopilgua@gmail.com">
+      ecopligua@gmail.com
+    </a>
+  </div>
+           <div class="red-social">
+    <img src="https://cdn.simpleicons.org/tiktok/000000" class="icono" alt="TikTok">
+    <span>TikTok:</span>
+    <a href="https://www.tiktok.com/@ecopligua" target="_blank">
+      Eco Pilgua
+    </a>
+  </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-pink-500 text-white text-center py-12">
+
+  <p class="text-xl font-semibold">
+    Eco Pilgua
+  </p>
+
+  <p class="mt-2 text-sm opacity-90">
+    Hecho a mano con amor en Chile
+  </p>
+
+  <div class="flex justify-center gap-6 mt-6">
+
+    <a href="https://www.instagram.com/ecopligua" target="_blank">
+      <img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram">
+    </a>
+
+    <a href="https://www.facebook.com/ecopilgua" target="_blank">
+      <img src="https://cdn.simpleicons.org/facebook/FFFFFF" alt="Facebook">
+    </a>
+
+    <a href="https://wa.me/56932776583" target="_blank">
+      <img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp">
+    </a>
+
+    <a href="https://www.tiktok.com/@ecopligua" target="_blank">
+      <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="TikTok">
+    </a>
+
+  </div>
+
+  <p class="mt-8 text-sm opacity-80">
+    © 2026 Eco Pilgua · Cada pieza cuenta una historia
+  </p>
+
+</footer>
+<script type="module" src="js/main.js"></script>
+
+<button id="btnArriba" class="btn-flotante" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+<script>
+    const btn = document.getElementById("btnArriba");
+    window.onscroll = function(){
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400){
+            btn.style.display = "flex";
+        }
+        else {
+            btn.style.display = "none";
+        }
+    };
+</script>
+
+</body>
+
+</html>

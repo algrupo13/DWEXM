@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.netlify/
+.playwright-mcp/
+.DS_Store
+npm-debug.log*
+ecopilgua-netlify-vite.png
+deno.lock
